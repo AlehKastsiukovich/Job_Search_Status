@@ -1,4 +1,4 @@
-package by.itacademy.training.jobsearchstatistic
+package by.itacademy.training.jobsearchstatistic.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
