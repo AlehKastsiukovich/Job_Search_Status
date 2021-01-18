@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface VacanciesRepository {
 
-    fun getAllVacancies(): Flow<Vacancy>
+    fun getAllVacancies(): Flow<List<Vacancy>>
 }
