@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/allJobsFragment"
-        android:name="by.itacademy.training.jobsearchstatistic.view.AllJobsFragment"
+        android:name="by.itacademy.training.jobsearchstatistic.view.AllVacanciesFragment"
         android:label="AllJobsFragment" />
 </navigation>

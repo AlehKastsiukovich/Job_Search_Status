@@ -2,10 +2,10 @@ package by.itacademy.training.jobsearchstatistic.model.dto
 
 import java.util.Date
 
-data class JobDto(
+data class VacancyDto(
     val date: Date?,
     val company: String?,
-    val source: JobResource?,
+    val source: VacancyResource?,
     val sourcePerson: String?,
-    val status: JobStatus?
+    val status: VacancyStatus?
 )

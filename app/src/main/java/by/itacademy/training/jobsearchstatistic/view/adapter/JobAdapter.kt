@@ -3,8 +3,11 @@ package by.itacademy.training.jobsearchstatistic.view.adapter
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 
 class JobAdapter : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+
+    private val jobList = mutableListOf<Vacancy>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         TODO("Not yet implemented")

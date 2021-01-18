@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toStartOf="@+id/statusTextView"/>
 
     <TextView
-        android:id="@+id/jobSourceTextView"
+        android:id="@+id/vacancySourceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_job_source"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_person_name"
-        app:layout_constraintTop_toBottomOf="@+id/jobSourceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/vacancySourceTextView"
         app:layout_constraintStart_toStartOf="@+id/companyTextView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

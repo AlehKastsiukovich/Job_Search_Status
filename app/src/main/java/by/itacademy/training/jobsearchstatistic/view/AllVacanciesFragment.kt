@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.itacademy.training.jobsearchstatistic.databinding.FragmenAllJobsBinding
 
-class AllJobsFragment : Fragment() {
+class AllVacanciesFragment : Fragment() {
 
     private lateinit var binding: FragmenAllJobsBinding
 

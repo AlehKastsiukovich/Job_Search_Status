@@ -1,6 +1,6 @@
 package by.itacademy.training.jobsearchstatistic.model.dto
 
-enum class JobResource {
+enum class VacancyResource {
     LINKED_IN,
     RABOTA_BY,
     MAIL
