@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">JobSearchStatistic</string>
+    <string name="default_date">17.01.2021</string>
+    <string name="default_status">DECLINE</string>
+    <string name="default_company_name">Company</string>
+    <string name="default_job_source">Source</string>
+    <string name="default_person_name">Person</string>
 </resources>
