@@ -1,6 +1,7 @@
 package by.itacademy.training.jobsearchstatistic.model.db
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyDto
 import kotlinx.coroutines.flow.Flow
@@ -10,4 +11,7 @@ interface VacanciesDao {
 
     @Query("SELECT * FROM vacancies")
     fun getAllVacancies(): Flow<List<VacancyDto>>
+
+    @Insert
+    fun insertVacancy(vacancyDto: VacancyDto)
 }

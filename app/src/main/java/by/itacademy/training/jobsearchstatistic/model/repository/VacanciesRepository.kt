@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface VacanciesRepository {
 
     fun getAllVacancies(): Flow<List<Vacancy>>
+
+    suspend fun addVacancy(vacancy: Vacancy)
 }

@@ -1,7 +1,12 @@
 package by.itacademy.training.jobsearchstatistic.util
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyDto
+import by.itacademy.training.jobsearchstatistic.model.dto.VacancyResource
+import by.itacademy.training.jobsearchstatistic.model.dto.VacancyStatus
+import java.text.SimpleDateFormat
 
 class DtoMapperImpl : DtoMapper {
 
@@ -10,7 +15,7 @@ class DtoMapperImpl : DtoMapper {
         list.forEach { dto ->
             vacancyList.add(
                 Vacancy(
-                    dto.date.toString(),
+                    SimpleDateFormat("dd-MM-yyyy").format(dto.date),
                     dto.company ?: EMPTY_STRING,
                     dto.source?.name ?: EMPTY_STRING,
                     dto.sourcePerson ?: EMPTY_STRING,
@@ -19,6 +24,17 @@ class DtoMapperImpl : DtoMapper {
             )
         }
         return vacancyList
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun vacancyToVacancyDto(vacancy: Vacancy): VacancyDto {
+        return VacancyDto(
+            date = SimpleDateFormat("dd-MM-yyyy").parse(vacancy.date),
+            company = vacancy.company,
+            source = enumValueOf<VacancyResource>(vacancy.source),
+            status = enumValueOf<VacancyStatus>(vacancy.status),
+            sourcePerson = vacancy.sourcePerson
+        )
     }
 
     companion object {

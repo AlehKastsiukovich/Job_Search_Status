@@ -16,4 +16,7 @@ class VacanciesRepositoryImpl(
             dtoMapper.fromDto(vacanciesDto)
         }
     }
+
+    override suspend fun addVacancy(vacancy: Vacancy) =
+        dao.insertVacancy(dtoMapper.vacancyToVacancyDto(vacancy))
 }
