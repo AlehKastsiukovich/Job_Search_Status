@@ -1,8 +1,7 @@
-package by.itacademy.training.jobsearchstatistic
+package by.itacademy.training.jobsearchstatistic.util
 
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyDto
-import by.itacademy.training.jobsearchstatistic.util.DtoMapper
 
 class DtoMapperImpl : DtoMapper {
 
