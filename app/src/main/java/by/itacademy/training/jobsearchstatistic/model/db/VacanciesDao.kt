@@ -13,5 +13,5 @@ interface VacanciesDao {
     fun getAllVacancies(): Flow<List<VacancyDto>>
 
     @Insert
-    fun insertVacancy(vacancyDto: VacancyDto)
+    suspend fun insertVacancy(vacancyDto: VacancyDto)
 }

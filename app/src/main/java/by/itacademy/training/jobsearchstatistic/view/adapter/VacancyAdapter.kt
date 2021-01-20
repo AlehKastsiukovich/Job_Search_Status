@@ -8,16 +8,16 @@ import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.databinding.JobItemBinding
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 
-class JobAdapter : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
 
     private val vacancyList = mutableListOf<Vacancy>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacancyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.job_item, parent)
-        return JobViewHolder(view)
+        return VacancyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
         holder.bind(vacancyList[position])
     }
 
@@ -29,7 +29,7 @@ class JobAdapter : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     override fun getItemCount() = vacancyList.size
 
-    class JobViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class VacancyViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val binding: JobItemBinding = JobItemBinding.bind(itemView)
 
