@@ -1,6 +1,6 @@
 package by.itacademy.training.jobsearchstatistic.util
 
-class Event<T>(
+class Event<out T>(
     val data: T?,
     val message: String?,
     val status: Status
