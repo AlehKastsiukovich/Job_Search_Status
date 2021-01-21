@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/allJobsFragment"
         android:name="by.itacademy.training.jobsearchstatistic.view.AllVacanciesFragment"
-        android:label="AllJobsFragment" />
+        android:label="AllJobsFragment" >
+        <action
+            android:id="@+id/action_allJobsFragment_to_addVacancyFragment"
+            app:destination="@id/addVacancyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVacancyFragment"
+        android:name="by.itacademy.training.jobsearchstatistic.view.AddVacancyFragment"
+        android:label="AddVacancyFragment" />
 </navigation>

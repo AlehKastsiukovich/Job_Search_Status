@@ -1,5 +1,6 @@
 package by.itacademy.training.jobsearchstatistic.model.repository
 
+import android.util.Log
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.model.db.VacanciesDao
 import by.itacademy.training.jobsearchstatistic.util.DtoMapper
@@ -13,6 +14,7 @@ class VacanciesRepositoryImpl(
 
     override fun getAllVacancies(): Flow<List<Vacancy>> {
         return dao.getAllVacancies().map { vacanciesDto ->
+            Log.d("TAGG", vacanciesDto.toString())
             dtoMapper.fromDto(vacanciesDto)
         }
     }
