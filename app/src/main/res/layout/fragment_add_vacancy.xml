@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/vacancySourceSpinner"
         android:text="@string/vacancy_source"/>
 
@@ -43,9 +42,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/companyTextView"
         app:layout_constraintBottom_toTopOf="@+id/sourcePersonTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/company_name"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/sourcePersonTextView"
@@ -55,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/vacancySourceSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/company_name"/>
+        android:hint="@string/recruiter_name"/>
 
     <TextView
         android:id="@+id/statusTitleTextView"
@@ -63,7 +60,6 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/statusSpinner"
         android:text="@string/vacancy_status"/>
 
@@ -73,9 +69,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/sourcePersonTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/addVacancyButton"
-        android:hint="@string/company_name"/>
+        app:layout_constraintBottom_toTopOf="@+id/addVacancyButton" />
 
     <Button
         android:id="@+id/addVacancyButton"

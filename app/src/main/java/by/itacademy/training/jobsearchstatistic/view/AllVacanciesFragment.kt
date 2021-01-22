@@ -11,9 +11,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.databinding.FragmenAllJobsBinding
-import by.itacademy.training.jobsearchstatistic.model.db.VacanciesDatabase
-import by.itacademy.training.jobsearchstatistic.model.repository.VacanciesRepositoryImpl
-import by.itacademy.training.jobsearchstatistic.util.DtoMapperImpl
 import by.itacademy.training.jobsearchstatistic.util.Status
 import by.itacademy.training.jobsearchstatistic.view.adapter.VacancyAdapter
 import by.itacademy.training.jobsearchstatistic.view.viewmodel.CustomViewModelFactory
@@ -23,12 +20,10 @@ class AllVacanciesFragment : Fragment() {
 
     private lateinit var binding: FragmenAllJobsBinding
     private lateinit var model: VacanciesViewModel
-    private lateinit var database: VacanciesDatabase
-    private lateinit var mainActivity: Context
+    private lateinit var factory: CustomViewModelFactory
     private lateinit var vacanciesAdapter: VacancyAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initDao()
         initViewModel()
         vacanciesAdapter = VacancyAdapter()
         binding.recyclerView.apply {
@@ -69,20 +64,11 @@ class AllVacanciesFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        model = ViewModelProvider(
-            viewModelStore,
-            CustomViewModelFactory(
-                VacanciesRepositoryImpl(database.vacanciesDao(), DtoMapperImpl())
-            )
-        ).get(VacanciesViewModel::class.java)
-    }
-
-    private fun initDao() {
-        database = VacanciesDatabase.getDatabase(mainActivity.applicationContext)
+        model = ViewModelProvider(viewModelStore, factory).get(VacanciesViewModel::class.java)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainActivity = (context as MainActivity)
+        factory = (context as MainActivity).viewModelFactory
     }
 }

@@ -13,7 +13,7 @@ class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() 
     private val vacancyList = mutableListOf<Vacancy>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacancyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.job_item, parent)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.job_item, parent, false)
         return VacancyViewHolder(view)
     }
 
@@ -29,7 +29,7 @@ class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() 
 
     override fun getItemCount() = vacancyList.size
 
-    class VacancyViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class VacancyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val binding: JobItemBinding = JobItemBinding.bind(itemView)
 

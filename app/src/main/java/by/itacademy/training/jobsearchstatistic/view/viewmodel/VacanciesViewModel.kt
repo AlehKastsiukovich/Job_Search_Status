@@ -3,19 +3,19 @@ package by.itacademy.training.jobsearchstatistic.view.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.model.repository.VacanciesRepositoryImpl
 import by.itacademy.training.jobsearchstatistic.util.Event
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : ViewModel() {
 
-    private var _vacanciesLiveData: LiveData<Event<List<Vacancy>>> = MutableLiveData()
+    private var _vacanciesLiveData = MutableLiveData<Event<List<Vacancy>>>()
     val vacanciesLiveData: LiveData<Event<List<Vacancy>>> = _vacanciesLiveData
 
     init {
@@ -29,14 +29,11 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
     }
 
     private fun fetchAllVacancies() {
-        _vacanciesLiveData = liveData {
-            try {
-                repository.getAllVacancies()
-                    .onStart { emit(Event.loading(null)) }
-                    .collect { emit(Event.success(it)) }
-            } catch (e: Exception) {
-                emit(Event.error(null, e.message.toString()))
-            }
+        viewModelScope.launch {
+            repository.getAllVacancies()
+                .onStart { _vacanciesLiveData.value = Event.loading(null) }
+                .catch { _vacanciesLiveData.value = Event.error(null, null) }
+                .collect { _vacanciesLiveData.value = Event.success(it) }
         }
     }
 }
