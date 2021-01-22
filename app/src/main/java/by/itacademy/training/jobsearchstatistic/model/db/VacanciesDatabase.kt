@@ -16,7 +16,7 @@ abstract class VacanciesDatabase : RoomDatabase() {
     abstract fun vacanciesDao(): VacanciesDao
 
     companion object {
-        const val DATABASE_NAME = "vacancies_db"
+        private const val DATABASE_NAME = "vacancies_db"
         fun getDatabase(context: Context): VacanciesDatabase =
             Room.databaseBuilder(
                 context,

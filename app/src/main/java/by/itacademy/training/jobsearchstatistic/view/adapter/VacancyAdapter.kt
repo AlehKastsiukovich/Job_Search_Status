@@ -22,8 +22,10 @@ class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() 
     }
 
     fun update(vacancies: List<Vacancy>) {
-        vacancyList.clear()
-        vacancyList.addAll(vacancies)
+        with(vacancyList) {
+            clear()
+            addAll(vacancies)
+        }
         notifyDataSetChanged()
     }
 
