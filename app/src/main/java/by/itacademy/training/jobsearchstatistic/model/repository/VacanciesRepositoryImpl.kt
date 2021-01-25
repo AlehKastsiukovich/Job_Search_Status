@@ -6,6 +6,7 @@ import by.itacademy.training.jobsearchstatistic.util.DtoMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 class VacanciesRepositoryImpl(
     private val dao: VacanciesDao,
@@ -17,4 +18,8 @@ class VacanciesRepositoryImpl(
 
     override suspend fun addVacancy(vacancy: Vacancy) =
         dao.insertVacancy(dtoMapper.vacancyToVacancyDto(vacancy))
+
+    override suspend fun getVacancyById(id: Int): Vacancy = withContext(Dispatchers.IO) {
+        dtoMapper.
+    }
 }

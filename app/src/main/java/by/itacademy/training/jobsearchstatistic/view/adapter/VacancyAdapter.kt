@@ -8,7 +8,9 @@ import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.databinding.JobItemBinding
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 
-class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
+class VacancyAdapter(
+    private val onVacancyClickListener: OnVacancyClickListener
+) : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
 
     private val vacancyList = mutableListOf<Vacancy>()
 
@@ -19,6 +21,7 @@ class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() 
 
     override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
         holder.bind(vacancyList[position])
+        onVacancyClickListener.onVacancyClick(vacancyList[position])
     }
 
     fun update(vacancies: List<Vacancy>) {
@@ -45,4 +48,9 @@ class VacancyAdapter : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() 
             }
         }
     }
+}
+
+interface OnVacancyClickListener {
+
+    fun onVacancyClick(vacancy: Vacancy)
 }

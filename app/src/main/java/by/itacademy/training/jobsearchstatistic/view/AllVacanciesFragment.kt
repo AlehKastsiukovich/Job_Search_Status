@@ -11,12 +11,14 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.databinding.FragmenAllJobsBinding
+import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.util.Status
+import by.itacademy.training.jobsearchstatistic.view.adapter.OnVacancyClickListener
 import by.itacademy.training.jobsearchstatistic.view.adapter.VacancyAdapter
 import by.itacademy.training.jobsearchstatistic.view.viewmodel.CustomViewModelFactory
 import by.itacademy.training.jobsearchstatistic.view.viewmodel.VacanciesViewModel
 
-class AllVacanciesFragment : Fragment() {
+class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
 
     private lateinit var binding: FragmenAllJobsBinding
     private lateinit var model: VacanciesViewModel
@@ -25,7 +27,7 @@ class AllVacanciesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViewModel()
-        vacanciesAdapter = VacancyAdapter()
+        vacanciesAdapter = VacancyAdapter(this)
         binding.recyclerView.apply {
             adapter = vacanciesAdapter
             layoutManager = LinearLayoutManager(activity)
@@ -41,6 +43,10 @@ class AllVacanciesFragment : Fragment() {
     ): View {
         binding = FragmenAllJobsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onVacancyClick(vacancy: Vacancy) {
+        TODO("Not yet implemented")
     }
 
     private fun renderData() {

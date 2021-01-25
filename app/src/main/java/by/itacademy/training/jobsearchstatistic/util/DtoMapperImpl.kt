@@ -37,6 +37,15 @@ class DtoMapperImpl : DtoMapper {
         )
     }
 
+    override fun vacancyDtoToVacancy(vacancyDto: VacancyDto) =
+        Vacancy(
+            SimpleDateFormat("dd-MM-yyyy").format(vacancyDto.date),
+            vacancyDto.company ?: EMPTY_STRING,
+            vacancyDto.source?.name ?: EMPTY_STRING,
+            vacancyDto.sourcePerson ?: EMPTY_STRING,
+            vacancyDto.status?.name ?: EMPTY_STRING
+        )
+
     companion object {
         private const val EMPTY_STRING = ""
     }

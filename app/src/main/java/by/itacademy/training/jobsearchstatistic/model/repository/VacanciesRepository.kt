@@ -8,4 +8,6 @@ interface VacanciesRepository {
     fun getAllVacancies(): Flow<List<Vacancy>>
 
     suspend fun addVacancy(vacancy: Vacancy)
+
+    suspend fun getVacancyById(id: Int): Vacancy
 }

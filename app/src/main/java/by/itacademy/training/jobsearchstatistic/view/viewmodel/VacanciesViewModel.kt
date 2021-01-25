@@ -17,6 +17,8 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
 
     private var _vacanciesLiveData = MutableLiveData<Event<List<Vacancy>>>()
     val vacanciesLiveData: LiveData<Event<List<Vacancy>>> = _vacanciesLiveData
+    private var _vacancy: LiveData<Event<Vacancy>> = MutableLiveData()
+    val vacancy: LiveData<Event<Vacancy>> = _vacancy
 
     init {
         fetchAllVacancies()
@@ -35,5 +37,8 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
                 .catch { _vacanciesLiveData.value = Event.error(null, null) }
                 .collect { _vacanciesLiveData.value = Event.success(it) }
         }
+    }
+
+    private fun getVacancyById(id: Int) {
     }
 }

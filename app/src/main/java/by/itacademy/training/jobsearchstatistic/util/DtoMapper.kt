@@ -8,4 +8,6 @@ interface DtoMapper {
     fun fromDto(list: List<VacancyDto>): List<Vacancy>
 
     fun vacancyToVacancyDto(vacancy: Vacancy): VacancyDto
+
+    fun vacancyDtoToVacancy(vacancyDto: VacancyDto): Vacancy
 }
