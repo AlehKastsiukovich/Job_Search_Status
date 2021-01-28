@@ -46,17 +46,16 @@ class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
     }
 
     override fun onVacancyClick(vacancy: Vacancy) {
-        TODO("Not yet implemented")
     }
 
     private fun renderData() {
         model.vacanciesLiveData.observe(
             viewLifecycleOwner,
-            {
-                when (it.status) {
+            { event ->
+                when (event.status) {
                     Status.LOADING -> { }
                     Status.ERROR -> { }
-                    Status.SUCCESS -> it.data?.let { vacanciesAdapter.update(it) }
+                    Status.SUCCESS -> event.data?.let { vacanciesAdapter.update(it) }
                 }
             }
         )

@@ -37,7 +37,7 @@ class DtoMapperImpl : DtoMapper {
         )
     }
 
-    override fun vacancyDtoToVacancy(vacancyDto: VacancyDto) =
+    override fun mapToVacancy(vacancyDto: VacancyDto) =
         Vacancy(
             SimpleDateFormat("dd-MM-yyyy").format(vacancyDto.date),
             vacancyDto.company ?: EMPTY_STRING,

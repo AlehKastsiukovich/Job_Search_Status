@@ -9,5 +9,5 @@ interface DtoMapper {
 
     fun vacancyToVacancyDto(vacancy: Vacancy): VacancyDto
 
-    fun vacancyDtoToVacancy(vacancyDto: VacancyDto): Vacancy
+    fun mapToVacancy(vacancyDto: VacancyDto): Vacancy
 }

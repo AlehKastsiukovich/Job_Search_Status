@@ -1,8 +1,10 @@
 package by.itacademy.training.jobsearchstatistic.view.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.model.repository.VacanciesRepositoryImpl
@@ -40,5 +42,14 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
     }
 
     private fun getVacancyById(id: Int) {
+        _vacancy = liveData {
+            emit(Event.loading(null))
+            try {
+                val result = repository.getVacancyById(id)
+                emit(Event.success(result))
+            } catch (e: Exception) {
+                emit(Event.error(null, e.message))
+            }
+        }
     }
 }

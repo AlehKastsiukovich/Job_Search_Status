@@ -20,8 +20,10 @@ class VacancyAdapter(
     }
 
     override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            onVacancyClickListener.onVacancyClick(vacancyList[position])
+        }
         holder.bind(vacancyList[position])
-        onVacancyClickListener.onVacancyClick(vacancyList[position])
     }
 
     fun update(vacancies: List<Vacancy>) {
