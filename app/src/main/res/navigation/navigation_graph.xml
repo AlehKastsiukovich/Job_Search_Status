@@ -18,6 +18,7 @@
         android:label="AddVacancyFragment" >
         <action
             android:id="@+id/action_addVacancyFragment_to_allJobsFragment"
-            app:destination="@id/allJobsFragment" />
+            app:destination="@id/allJobsFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

@@ -126,7 +126,7 @@ class AddVacancyFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        model = ViewModelProvider(viewModelStore, factory).get(VacanciesViewModel::class.java)
+        model = ViewModelProvider(requireActivity(), factory).get(VacanciesViewModel::class.java)
     }
 
     private fun createVacancy(): Vacancy {

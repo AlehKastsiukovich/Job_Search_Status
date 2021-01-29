@@ -75,7 +75,7 @@ class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
     }
 
     private fun initViewModel() {
-        model = ViewModelProvider(viewModelStore, factory).get(VacanciesViewModel::class.java)
+        model = ViewModelProvider(requireActivity(), factory).get(VacanciesViewModel::class.java)
     }
 
     override fun onAttach(context: Context) {

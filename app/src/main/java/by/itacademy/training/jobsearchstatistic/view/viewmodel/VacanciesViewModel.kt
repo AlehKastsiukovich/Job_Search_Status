@@ -42,9 +42,9 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
         }
     }
 
-    fun updateVacancy(vacancy: Vacancy) {
+    fun updateVacancy(updatedVacancy: Vacancy) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateVacancy(vacancy)
+            repository.updateVacancy(updatedVacancy)
         }
     }
 
