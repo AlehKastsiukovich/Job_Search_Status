@@ -1,6 +1,5 @@
 package by.itacademy.training.jobsearchstatistic.view.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,8 +18,7 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
 
     private var _vacanciesLiveData = MutableLiveData<Event<List<Vacancy>>>()
     val vacanciesLiveData: LiveData<Event<List<Vacancy>>> = _vacanciesLiveData
-    private var _vacancy: LiveData<Event<Vacancy>> = MutableLiveData()
-    val vacancy: LiveData<Event<Vacancy>> = _vacancy
+    var vacancy: LiveData<Event<Vacancy>> = MutableLiveData()
 
     init {
         fetchAllVacancies()
@@ -32,17 +30,8 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
         }
     }
 
-    private fun fetchAllVacancies() {
-        viewModelScope.launch {
-            repository.getAllVacancies()
-                .onStart { _vacanciesLiveData.value = Event.loading(null) }
-                .catch { _vacanciesLiveData.value = Event.error(null, null) }
-                .collect { _vacanciesLiveData.value = Event.success(it) }
-        }
-    }
-
-    private fun getVacancyById(id: Int) {
-        _vacancy = liveData {
+    fun getVacancyById(id: Int) {
+        vacancy = liveData {
             emit(Event.loading(null))
             try {
                 val result = repository.getVacancyById(id)
@@ -50,6 +39,21 @@ class VacanciesViewModel(private val repository: VacanciesRepositoryImpl) : View
             } catch (e: Exception) {
                 emit(Event.error(null, e.message))
             }
+        }
+    }
+
+    fun updateVacancy(vacancy: Vacancy) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateVacancy(vacancy)
+        }
+    }
+
+    private fun fetchAllVacancies() {
+        viewModelScope.launch {
+            repository.getAllVacancies()
+                .onStart { _vacanciesLiveData.value = Event.loading(null) }
+                .catch { _vacanciesLiveData.value = Event.error(null, null) }
+                .collect { _vacanciesLiveData.value = Event.success(it) }
         }
     }
 }

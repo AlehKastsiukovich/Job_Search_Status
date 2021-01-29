@@ -19,6 +19,9 @@ class VacanciesRepositoryImpl(
     override suspend fun addVacancy(vacancy: Vacancy) =
         dao.insertVacancy(dtoMapper.vacancyToVacancyDto(vacancy))
 
+    override suspend fun updateVacancy(vacancy: Vacancy) =
+        dao.updateVacancy(dtoMapper.vacancyToVacancyDto(vacancy))
+
     override suspend fun getVacancyById(id: Int): Vacancy = withContext(Dispatchers.IO) {
         dtoMapper.mapToVacancy(dao.getItemById(id))
     }

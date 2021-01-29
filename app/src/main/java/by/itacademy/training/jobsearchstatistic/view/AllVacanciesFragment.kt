@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.itacademy.training.jobsearchstatistic.R
+import by.itacademy.training.jobsearchstatistic.constants.ARGUMENT_VACANCY_ID
 import by.itacademy.training.jobsearchstatistic.databinding.FragmenAllJobsBinding
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.util.Status
@@ -46,6 +47,11 @@ class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
     }
 
     override fun onVacancyClick(vacancy: Vacancy) {
+        val bundle = Bundle()
+        bundle.putInt(ARGUMENT_VACANCY_ID, vacancy.id)
+        Navigation.findNavController(
+            requireActivity(), R.id.myNavHostFragment
+        ).navigate(R.id.action_allJobsFragment_to_addVacancyFragment, bundle)
     }
 
     private fun renderData() {

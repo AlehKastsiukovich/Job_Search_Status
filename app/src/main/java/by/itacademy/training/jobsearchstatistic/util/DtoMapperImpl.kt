@@ -15,6 +15,7 @@ class DtoMapperImpl : DtoMapper {
         list.forEach { dto ->
             vacancyList.add(
                 Vacancy(
+                    dto.id,
                     SimpleDateFormat("dd-MM-yyyy").format(dto.date),
                     dto.company ?: EMPTY_STRING,
                     dto.source?.name ?: EMPTY_STRING,
@@ -29,6 +30,7 @@ class DtoMapperImpl : DtoMapper {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun vacancyToVacancyDto(vacancy: Vacancy): VacancyDto {
         return VacancyDto(
+            id = vacancy.id,
             date = SimpleDateFormat("dd-MM-yyyy").parse(vacancy.date),
             company = vacancy.company,
             source = enumValueOf<VacancyResource>(vacancy.source),
@@ -39,6 +41,7 @@ class DtoMapperImpl : DtoMapper {
 
     override fun mapToVacancy(vacancyDto: VacancyDto) =
         Vacancy(
+            vacancyDto.id,
             SimpleDateFormat("dd-MM-yyyy").format(vacancyDto.date),
             vacancyDto.company ?: EMPTY_STRING,
             vacancyDto.source?.name ?: EMPTY_STRING,

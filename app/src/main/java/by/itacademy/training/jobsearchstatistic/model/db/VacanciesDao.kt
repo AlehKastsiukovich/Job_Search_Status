@@ -3,6 +3,7 @@ package by.itacademy.training.jobsearchstatistic.model.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyDto
 import kotlinx.coroutines.flow.Flow
 
@@ -17,4 +18,7 @@ interface VacanciesDao {
 
     @Insert
     suspend fun insertVacancy(vacancyDto: VacancyDto)
+
+    @Update
+    suspend fun updateVacancy(vacancyDto: VacancyDto)
 }

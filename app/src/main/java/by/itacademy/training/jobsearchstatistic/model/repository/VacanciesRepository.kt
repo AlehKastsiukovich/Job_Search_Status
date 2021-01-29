@@ -10,4 +10,6 @@ interface VacanciesRepository {
     suspend fun addVacancy(vacancy: Vacancy)
 
     suspend fun getVacancyById(id: Int): Vacancy
+
+    suspend fun updateVacancy(vacancy: Vacancy)
 }

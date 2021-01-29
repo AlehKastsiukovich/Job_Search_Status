@@ -15,5 +15,9 @@
     <fragment
         android:id="@+id/addVacancyFragment"
         android:name="by.itacademy.training.jobsearchstatistic.view.AddVacancyFragment"
-        android:label="AddVacancyFragment" />
+        android:label="AddVacancyFragment" >
+        <action
+            android:id="@+id/action_addVacancyFragment_to_allJobsFragment"
+            app:destination="@id/allJobsFragment" />
+    </fragment>
 </navigation>
