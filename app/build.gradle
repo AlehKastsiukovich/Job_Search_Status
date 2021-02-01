@@ -39,6 +39,13 @@ android {
 }
 
 dependencies {
+    //koin
+    implementation "org.koin:koin-core:2.2.2"
+    testImplementation "org.koin:koin-test:2.2.2"
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-android-scope:2.2.2"
+    implementation "org.koin:koin-android-viewmodel:2.2.2"
+
     kapt "androidx.room:room-compiler:2.2.6"
     implementation "androidx.room:room-runtime:2.2.6"
     implementation "androidx.room:room-ktx:2.2.6"

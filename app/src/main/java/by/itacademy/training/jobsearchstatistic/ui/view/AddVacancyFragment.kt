@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.constants.ARGUMENT_VACANCY_ID
 import by.itacademy.training.jobsearchstatistic.constants.UPDATE_TEXT
