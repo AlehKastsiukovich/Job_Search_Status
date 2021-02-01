@@ -6,11 +6,9 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import by.itacademy.training.jobsearchstatistic.R
-import by.itacademy.training.jobsearchstatistic.ui.viewmodel.CustomViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModelFactory = CustomViewModelFactory(this)
     private lateinit var controller: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {

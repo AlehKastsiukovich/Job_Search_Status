@@ -1,34 +1,31 @@
 package by.itacademy.training.jobsearchstatistic.ui.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.constants.ARGUMENT_VACANCY_ID
 import by.itacademy.training.jobsearchstatistic.databinding.FragmenAllJobsBinding
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
-import by.itacademy.training.jobsearchstatistic.util.Status
 import by.itacademy.training.jobsearchstatistic.ui.adapter.OnVacancyClickListener
 import by.itacademy.training.jobsearchstatistic.ui.adapter.VacancyAdapter
-import by.itacademy.training.jobsearchstatistic.ui.viewmodel.CustomViewModelFactory
 import by.itacademy.training.jobsearchstatistic.ui.viewmodel.VacanciesViewModel
+import by.itacademy.training.jobsearchstatistic.util.Status
+import org.koin.android.scope.ScopeFragment
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
+class AllVacanciesFragment : ScopeFragment(), OnVacancyClickListener {
+
+    private val model: VacanciesViewModel by viewModel()
+    private val vacanciesAdapter: VacancyAdapter by inject { parametersOf(this) }
 
     private lateinit var binding: FragmenAllJobsBinding
-    private lateinit var model: VacanciesViewModel
-    private lateinit var factory: CustomViewModelFactory
-    private lateinit var vacanciesAdapter: VacancyAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViewModel()
-        vacanciesAdapter = VacancyAdapter(this)
         binding.recyclerView.apply {
             adapter = vacanciesAdapter
             layoutManager = LinearLayoutManager(activity)
@@ -72,14 +69,5 @@ class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
             .setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.addVacancyFragment, null)
             )
-    }
-
-    private fun initViewModel() {
-        model = ViewModelProvider(requireActivity(), factory).get(VacanciesViewModel::class.java)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        factory = (context as MainActivity).viewModelFactory
     }
 }
