@@ -1,4 +1,4 @@
-package by.itacademy.training.jobsearchstatistic.view.viewmodel
+package by.itacademy.training.jobsearchstatistic.ui.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

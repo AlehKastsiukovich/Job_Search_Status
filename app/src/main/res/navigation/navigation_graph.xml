@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/allJobsFragment"
-        android:name="by.itacademy.training.jobsearchstatistic.view.AllVacanciesFragment"
+        android:name="by.itacademy.training.jobsearchstatistic.ui.view.AllVacanciesFragment"
         android:label="AllJobsFragment" >
         <action
             android:id="@+id/action_allJobsFragment_to_addVacancyFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/addVacancyFragment"
-        android:name="by.itacademy.training.jobsearchstatistic.view.AddVacancyFragment"
+        android:name="by.itacademy.training.jobsearchstatistic.ui.view.AddVacancyFragment"
         android:label="AddVacancyFragment" >
         <action
             android:id="@+id/action_addVacancyFragment_to_allJobsFragment"

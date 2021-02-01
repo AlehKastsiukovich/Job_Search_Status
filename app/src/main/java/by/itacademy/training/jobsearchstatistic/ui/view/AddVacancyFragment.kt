@@ -1,4 +1,4 @@
-package by.itacademy.training.jobsearchstatistic.view
+package by.itacademy.training.jobsearchstatistic.ui.view
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.constants.ARGUMENT_VACANCY_ID
 import by.itacademy.training.jobsearchstatistic.constants.UPDATE_TEXT
@@ -18,8 +17,8 @@ import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyResource
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyStatus
 import by.itacademy.training.jobsearchstatistic.util.Status
-import by.itacademy.training.jobsearchstatistic.view.viewmodel.CustomViewModelFactory
-import by.itacademy.training.jobsearchstatistic.view.viewmodel.VacanciesViewModel
+import by.itacademy.training.jobsearchstatistic.ui.viewmodel.CustomViewModelFactory
+import by.itacademy.training.jobsearchstatistic.ui.viewmodel.VacanciesViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
 

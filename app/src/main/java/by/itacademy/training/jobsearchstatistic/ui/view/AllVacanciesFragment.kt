@@ -1,4 +1,4 @@
-package by.itacademy.training.jobsearchstatistic.view
+package by.itacademy.training.jobsearchstatistic.ui.view
 
 import android.content.Context
 import android.os.Bundle
@@ -14,10 +14,10 @@ import by.itacademy.training.jobsearchstatistic.constants.ARGUMENT_VACANCY_ID
 import by.itacademy.training.jobsearchstatistic.databinding.FragmenAllJobsBinding
 import by.itacademy.training.jobsearchstatistic.domain.Vacancy
 import by.itacademy.training.jobsearchstatistic.util.Status
-import by.itacademy.training.jobsearchstatistic.view.adapter.OnVacancyClickListener
-import by.itacademy.training.jobsearchstatistic.view.adapter.VacancyAdapter
-import by.itacademy.training.jobsearchstatistic.view.viewmodel.CustomViewModelFactory
-import by.itacademy.training.jobsearchstatistic.view.viewmodel.VacanciesViewModel
+import by.itacademy.training.jobsearchstatistic.ui.adapter.OnVacancyClickListener
+import by.itacademy.training.jobsearchstatistic.ui.adapter.VacancyAdapter
+import by.itacademy.training.jobsearchstatistic.ui.viewmodel.CustomViewModelFactory
+import by.itacademy.training.jobsearchstatistic.ui.viewmodel.VacanciesViewModel
 
 class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
 
