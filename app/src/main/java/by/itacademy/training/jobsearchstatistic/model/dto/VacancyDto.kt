@@ -12,5 +12,5 @@ data class VacancyDto(
     val company: String?,
     val source: VacancyResource?,
     val sourcePerson: String?,
-    val status: VacancyStatus?
+    var status: VacancyStatus?
 )
