@@ -7,8 +7,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class VacanciesRepositoryImpl(
+@Singleton
+class VacanciesRepositoryImpl @Inject constructor(
     private val dao: VacanciesDao,
     private val dtoMapper: DtoMapper
 ) : VacanciesRepository {

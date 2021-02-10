@@ -7,8 +7,11 @@ import by.itacademy.training.jobsearchstatistic.model.dto.VacancyDto
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyResource
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyStatus
 import java.text.SimpleDateFormat
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class DtoMapperImpl : DtoMapper {
+@Singleton
+class DtoMapperImpl @Inject constructor() : DtoMapper {
 
     override fun fromDto(list: List<VacancyDto>): List<Vacancy> {
         val vacancyList = mutableListOf<Vacancy>()

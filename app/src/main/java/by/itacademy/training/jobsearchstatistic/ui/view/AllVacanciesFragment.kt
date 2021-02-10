@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.itacademy.training.jobsearchstatistic.R
@@ -14,22 +16,19 @@ import by.itacademy.training.jobsearchstatistic.ui.adapter.OnVacancyClickListene
 import by.itacademy.training.jobsearchstatistic.ui.adapter.VacancyAdapter
 import by.itacademy.training.jobsearchstatistic.ui.viewmodel.VacanciesViewModel
 import by.itacademy.training.jobsearchstatistic.util.Status
-import org.koin.android.scope.ScopeFragment
-import org.koin.android.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class AllVacanciesFragment : ScopeFragment(), OnVacancyClickListener {
-
-    private val model: VacanciesViewModel by viewModel()
-    private val vacanciesAdapter: VacancyAdapter by inject { parametersOf(this) }
+@AndroidEntryPoint
+class AllVacanciesFragment : Fragment(), OnVacancyClickListener {
 
     private lateinit var binding: FragmenAllJobsBinding
+    private val model: VacanciesViewModel by viewModels()
+
+    @Inject lateinit var vacancyAdapter: VacancyAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.recyclerView.apply {
-            adapter = vacanciesAdapter
-            layoutManager = LinearLayoutManager(activity)
-        }
+        initAdapter()
         renderData()
         setUpAddButton()
     }
@@ -41,6 +40,13 @@ class AllVacanciesFragment : ScopeFragment(), OnVacancyClickListener {
     ): View {
         binding = FragmenAllJobsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    private fun initAdapter() {
+        binding.recyclerView.apply {
+            adapter = vacancyAdapter
+            layoutManager = LinearLayoutManager(requireActivity())
+        }
     }
 
     override fun onVacancyClick(vacancy: Vacancy) {
@@ -58,7 +64,7 @@ class AllVacanciesFragment : ScopeFragment(), OnVacancyClickListener {
                 when (event.status) {
                     Status.LOADING -> { }
                     Status.ERROR -> { }
-                    Status.SUCCESS -> event.data?.let { vacanciesAdapter.update(it) }
+                    Status.SUCCESS -> event.data?.let { vacancyAdapter.update(it) }
                 }
             }
         )

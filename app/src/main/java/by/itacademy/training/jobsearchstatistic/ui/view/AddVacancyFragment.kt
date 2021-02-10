@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import by.itacademy.training.jobsearchstatistic.R
 import by.itacademy.training.jobsearchstatistic.constants.ARGUMENT_VACANCY_ID
@@ -17,13 +18,14 @@ import by.itacademy.training.jobsearchstatistic.model.dto.VacancyResource
 import by.itacademy.training.jobsearchstatistic.model.dto.VacancyStatus
 import by.itacademy.training.jobsearchstatistic.ui.viewmodel.VacanciesViewModel
 import by.itacademy.training.jobsearchstatistic.util.Status
-import org.koin.android.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 
+@AndroidEntryPoint
 class AddVacancyFragment : Fragment() {
 
-    private val model: VacanciesViewModel by viewModel()
+    private val model: VacanciesViewModel by viewModels()
 
     private lateinit var binding: FragmentAddVacancyBinding
     private lateinit var sourceSpinner: Spinner

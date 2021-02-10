@@ -53,6 +53,5 @@ class VacancyAdapter(
 }
 
 interface OnVacancyClickListener {
-
     fun onVacancyClick(vacancy: Vacancy)
 }
